@@ -189,7 +189,16 @@ a.nav-link:hover{
     background: none;
 }
 
-@media (max-width: 576px) {
+
+/*screens between  577px and 767 px*/
+@media  (min-width: 577px) and (max-width: 767px) {
+    .mainWrapper{
+        padding-top: 100px;
+    }
+}
+
+
+@media (max-width: 577px) {
     .mainWrapper{
         padding-top: 100px;
     }
