@@ -17,6 +17,6 @@ $stmt = $conn->prepare("INSERT INTO product (category_id, name, description, pri
                         (?,?,?,?,?)");
 $stmt->bind_param("issdi",$product["categoryID"],$product["name"],$product["description"],
                     $product["price"],$product["stock"]);
-$stmt->execute();
+echo $stmt->execute();
 
 ?>

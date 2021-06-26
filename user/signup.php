@@ -18,8 +18,7 @@ $stmt = $conn->prepare("INSERT INTO user (user_type_id, first_name, last_name, e
                 VALUES (0,?,?,?,?,?)");
 $stmt-> bind_param("sssss",$user["firstName"],$user["lastName"],$user["email"],
                     $user["password"],$user["cellphone"]);
-$stmt->execute();
-echo 1;
+echo $stmt->execute();
 
 mysqli_close($conn);
 

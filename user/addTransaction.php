@@ -12,9 +12,9 @@ if ($conn -> connect_error) {
 }
 
 $content = trim(file_get_contents("php://input"));
-$product = json_decode($content,true);
-$stmt = $conn->prepare("UPDATE cart SET amount = ? WHERE user_id = ? AND article_id = ?");
-$stmt->bind_param("iii",$product["amount"],$_SESSION["id"],$product["id"]);
-echo $stmt->execute();
+$user = json_decode($content,true);
+$stmt = $conn->prepare("INSERT INTO transactions (user_id,funds) VALUES (?,?)");
+$stmt->bind_param("id",$user["id"],$user["funds"]);
+$stmt->execute();
 
 ?>
