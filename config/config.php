@@ -9,12 +9,15 @@ if (!isset($_SESSION)) {
     session_start();
 }
 
-$hostname = "localhost:3306";
-$username = "admin";
-$password = "mundial.1";
+$servername = "localhost";
+$username = "root";
+$dbpassword = "";
 $dbname = "cafe";
 
-$connection = mysqli_connect($hostname, $username, $password, $dbname) or die("Database connection not established.")
+$conn = new mysqli($servername,$username,$dbpassword,$dbname);
 
+if ($conn -> connect_error) {
+    die("Connection failed: " . $conn -> connect_error);
+}
 
 ?>

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>transacciones</title>
+        <style>
+            table {
+                margin: auto;
+                width: 450px;
+                border: 2px dotted #FF0000;
+            }
+        </style>
+    </head>
+    <body>
+        <form action="../user/addTransaction.php" method="POST" enctype="multipart/form-data">
+            <table>
+                <tr>
+                <td>
+                    <label for="imagen">Imagen</label>
+                </td>
+                <td>
+                    <input type="file" name="image" size="20">
+                </td>
+                </tr>
+                <tr>
+                <td>
+                    <input type="text" name="amount">
+                </td>    
+                </tr>
+                <tr>
+                <td colspan="2" style="text-align:center">
+                    <input type="submit" value="Enviar imagen">
+                </td>
+                </tr>
+            </table>
+    </body>
+</html>

@@ -10,13 +10,36 @@ if(isset($_POST['login'])) {
     $myusername = $_POST['username'];
     $mypassword = $_POST['password'];
 
-    if(!empty($myusername) && !empty($mypassword)){
+    if(!empty($myusername) && !empty($mypassword)) {
 
-        $sql = "SELECT * FROM users where username='$myusername' and password='$mypassword'";
+        $stmt = $conn->prepare("SELECT * FROM user WHERE email = ? AND password = ?");
+        $stmt->bind_param("ss",$myusername,$mypassword);
+        if ($stmt->execute()) {
+            $result = $stmt->get_result();
+            if($result->num_rows > 0) {
+                if($row = $result -> fetch_assoc()) {
+                    $user = new User();
+                    $user->name=$row['first_name'];
+                    $_SESSION['user'] = serialize($user);
+                    $_SESSION['id'] = $row['id'];
+                    $_SESSION['name'] = $row['first_name'];
+                   // $_SESSION['username'] = $row['username'];
+                    $_SESSION['lastname'] = $row['last_name'];
+                    //$_SESSION['second_lastname'] = $row['second_lastname'];
+                    $_SESSION['email'] =  $row['email'];
+                }
+            } else {
+                $verificationRequiredErr = '<div class="alert alert-danger">Account verification is required for login.</div>';
+            }
+            header("Location: ./welcome.php?id=1");
+        }
+        
 
-        //$resultado = $connection->query($sql);
+        /*$sql = "SELECT * FROM user where email='$myusername' and password='$mypassword'";
+
+        //$resultado = $conn->query($sql);
         //$numRows= $resultado->num_rows;
-        $resultado =mysqli_query($connection,$sql);
+        $resultado =mysqli_query($conn,$sql);
         $rowCount = mysqli_num_rows($resultado);
 
         echo "<script type='text/javascript'>console.log('$rowCount');</script>";
@@ -38,7 +61,7 @@ if(isset($_POST['login'])) {
             header("Location: ./welcome.php?id=1");
         }else{
             $verificationRequiredErr = '<div class="alert alert-danger">Account verification is required for login.</div>';
-        }
+        }*/
 
     } else {
         if(empty($email_signin)){

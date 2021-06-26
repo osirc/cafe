@@ -8,4 +8,19 @@ $stmt = $conn->prepare("UPDATE transactions SET transactions_status_id = ? WHERE
 $stmt->bind_param("iii",$user["status"],$user["id"],$user["transactionID"]);
 echo $stmt->execute();
 
+if ($user["status"] == 1) {
+    $funds = 0;
+    $stmt = $conn->prepare("SELECT funds FROM user WHERE id = ?");
+    $stmt->bind_param("i",$user["id"]);
+    if ($stmt->execute()) {
+        $result = $stmt->get_result();
+        if ($row = $result -> fetch_assoc()) {
+            $funds = $row["funds"];
+            $stmt = $conn->prepare("UPDATE user SET funds = ? WHERE id = ?");
+            $stmt->bind_param("di",$funds,$user["id"]);
+            echo $stmt->execute();
+        }
+    }
+}
+
 ?>
