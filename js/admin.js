@@ -10,5 +10,7 @@ function getSummary() {
         summary = JSON.parseText(response);
         alert(`Users: ${summary.users} Articles: ${summary.articles} 
                 Profits: $${summary.profits} Pending transactions: ${summary.pendingTransactions}`)
+    }).then(data=>{
+
     });
 }

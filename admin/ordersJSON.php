@@ -3,22 +3,21 @@
 class ordersJSON {
 
     public $id;
+    public $statusID;
     public $firstName;
     public $lastName;
     public $productName;
     public $amount;
     public $date;
-    public $statusID;
 
-    function __construct($id,$firstName,$lastName,$productName,$amount,$date,$statusID) {
+    function __construct($id,$statusID,$firstName,$lastName,$productName,$amount,$date) {
         $this->id = $id;
+        $this->statusID = $statusID;
         $this->firstName = $firstName;
         $this->lastName = $lastName;
         $this->productName = $productName;
         $this->amount = $amount;
         $this->date = $date;
-        $this->statusID = $statusID;
-
     }
 }
 
