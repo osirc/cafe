@@ -35,6 +35,9 @@
                                    case 4:
                                        include ('./users/users.php');
                                        break;
+                                   case 5:
+                                       include ('./users/registerUser.php');
+                                       break;
                                }
                            ?>
                         </div>
