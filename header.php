@@ -29,6 +29,9 @@
                 $("#mainWrapper").addClass("active");
             }
         });
-    });
 
+        $(".myNavItem").click(function(event) {
+            $( "a.myNavItem.active" ).removeClass( "active" );
+        });
+    });
 </script>
