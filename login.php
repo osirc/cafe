@@ -35,7 +35,7 @@ if(isset($_POST['login'])) {
                 $_SESSION['second_lastname'] = $row['second_lastname'];
                 $_SESSION['email'] =  $row['email'];
             }
-            header("Location: ./welcome.php?id=1");
+            header("Location: ./welcome.php?id=1&active=1");
         }else{
             $verificationRequiredErr = '<div class="alert alert-danger">Account verification is required for login.</div>';
         }
