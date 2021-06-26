@@ -33,18 +33,18 @@ function VerifyData() {
         alert("Datos incompletos, por favor llene el formulario en su totalidad.")
         return false;
     }
-    alert(`${request.firstName},${request.lastName},${request.email},${request.cellphone},${request.password}`);
-    fetch(`../php/signup.php`, {
+    //alert(`${request.firstName},${request.lastName},${request.email},${request.cellphone},${request.password}`);
+    fetch(`../user/signup.php`, {
         method: 'POST',
         headers: new Headers({"Content-Type": `application/json;charset=utf-8`,}),
         body: JSON.stringify(request)
     })
     .then(response => {
         if (response.ok) {
-            alert("Datos recibidos");
-            return response.json();
+            //alert("Datos recibidos:" + response.text());
+            return response.text();
         } else{
-            alert(`Ocurrió un error, por favor inténtelo de nuevo`)
+            alert(`Ocurrió un error, por favor inténtelo de nuevo`);
             return null;
         }
     })
