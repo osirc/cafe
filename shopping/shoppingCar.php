@@ -8,13 +8,19 @@
         </div>
         <div class="card-body">
             <!-- PRODUCT -->
+            <?php
+            
+            $products = json_decode($userCart,JSON_UNESCAPED_UNICODE);
+            foreach($products as $product) {
+            
+            ?>
             <div class="row">
                 <div class="col-12 col-sm-12 col-md-2 text-center">
-                    <img class="img-responsive" src=images/starbucks.png alt="prewiew" style="max-width: 25% !important;">
+                    <img class="img-responsive" src=<?php echo "'" . $product["imagePath"] . "'";  ?> alt="prewiew" style="max-width: 25% !important;">
                 </div>
                 <div class="col-12 text-sm-center text-md-left col-md-6">
                     <figcaption class="media-body">
-                        <h6 class="title text-truncate">Product name goes here </h6>
+                        <h6 class="title text-truncate"><?php echo $product["productName"]; ?> </h6>
                         <dl class="param param-inline small">
                             <dt>Size: </dt>
                             <dd>XXL</dd>
@@ -38,8 +44,8 @@
                 <div class="col-12 col-sm-12 text-sm-center col-md-3 text-md-right row">
                     <div class="col-4  col-md-6">
                         <div class="price-wrap">
-                            <var class="price">USD 145</var>
-                            <small class="text-muted">(USD5 each)</small>
+                            <var class="price">$<?php echo $product["price"] * $product["amount"];  ?></var>
+                            <small class="text-muted">$<?php echo $product["price"]?> cada uno</small>
                         </div>
                     </div>
                     <div class="col-3 col-sm-3 col-md-5 text-sm-center">
@@ -50,6 +56,9 @@
                 </div>
             </div>
             <hr>
+            <?php
+            }   //end for
+            ?>
             <!-- END PRODUCT -->
             <div class="pull-right">
                 <a href="" class="btn btn-outline-secondary pull-right">

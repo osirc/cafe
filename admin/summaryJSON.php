@@ -28,7 +28,7 @@ class SummaryJSON {
                 echo "Articles: " .$this->products . "\n";
             }
         }
-        $sql = "SELECT COUNT(id) AS transactions FROM transaction WHERE transaction_status_id = 0";
+        $sql = "SELECT COUNT(id) AS transactions FROM transactions WHERE transactions_status_id = 0";
         $result = $conn->query($sql);
         if ($result->num_rows > 0) {
             if($row = $result -> fetch_assoc()) {
@@ -36,7 +36,7 @@ class SummaryJSON {
                 echo "Pending transactions: " .$this->pendingTransactions . "\n";
             }
         }
-        $sql = "SELECT COUNT(ticket.id) AS profits FROM ticket INNER JOIN orders ON orders_id = orders.id WHERE 
+        $sql = "SELECT SUM(price * amount) AS profits FROM ticket INNER JOIN orders ON orders_id = orders.id WHERE 
                 DATEDIFF(CURDATE(),date) <= 30 AND orders_status_id = 1";
         $result = $conn->query($sql);
         if ($result->num_rows > 0) {

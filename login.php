@@ -31,7 +31,7 @@ if(isset($_POST['login'])) {
             } else {
                 $verificationRequiredErr = '<div class="alert alert-danger">Account verification is required for login.</div>';
             }
-            header("Location: ./welcome.php?id=1");
+            header("Location: ./welcome.php?id=1&active=1");
         }
         
 

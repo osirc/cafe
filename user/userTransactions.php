@@ -1,7 +1,7 @@
 <?php
 
 include("userTransactionsJSON.php");
-include("../config/config.php");
+//include("../config/config.php");
 
 $content = trim(file_get_contents("php://input"));
 $user = json_decode($content,true);
@@ -13,10 +13,10 @@ if ($stmt->execute()) {
     $result = $stmt->get_result();
     $transactions = array();
     while ($row = $result->fetch_assoc()) {
-        array_push(new userTransactionsJSON($row["id"],$row["status"],
+        array_push($transactions,new userTransactionsJSON($row["id"],$row["status"],
                     $row["funds"],$row["send_date"],$row["path"]));
     }
-    echo json_encode($transactions);
+    $transactions = json_encode($transactions);
 }
 
         /*"SELECT transactions.id AS transactions_id, user.id AS user_id, transactions_status_id AS status_id, 

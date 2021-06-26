@@ -4,6 +4,9 @@
 <head>
     <?php include('./header.php') ?>
     <?php include('./checkLogin.php') ?>
+    <?php include("./user/userCart.php")?>
+    <?php include("./menu/allArticles.php")?>
+    <?php include("./user/userTransactions.php")?>
 </head>
    <body>
        <div class="wrapper">
@@ -33,7 +36,7 @@
                                        include ('./shopping/shoppingCar.php');
                                        break;
                                    case 4:
-                                       include ('./users/users.php');
+                                       include ('./users/transactions.php');
                                        break;
                                    case 5:
                                        include ('./users/registerUser.php');
