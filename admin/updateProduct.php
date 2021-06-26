@@ -1,15 +1,6 @@
 <?php
 
-$servername = "localhost";
-$productname = "root";
-$dbpassword = "";
-$dbname = "cafe";
-
-$conn = new mysqli($servername,$productname,$dbpassword,$dbname);
-
-if ($conn -> connect_error) {
-    die("Connection failed: " . $conn -> connect_error);
-}
+include("../config/config.php");
 
 $content = trim(file_get_contents("php://input"));
 $product = json_decode($content,true);

@@ -1,17 +1,7 @@
 <?php
 
 include("categoryJSON.php");
-
-$servername = "localhost";
-$username = "root";
-$dbpassword = "";
-$dbname = "cafe";
-
-$conn = new mysqli($servername,$username,$dbpassword,$dbname);
-
-if ($conn -> connect_error) {
-    die("Connection failed: " . $conn -> connect_error);
-}
+include("../config/config.php");
 
 $sql = "SELECT name, description FROM category";
 $result = $conn->query($sql);

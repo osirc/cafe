@@ -1,15 +1,6 @@
 <?php
 
-$servername = "localhost";
-$username = "root";
-$dbpassword = "";
-$dbname = "cafe";
-
-$conn = new mysqli($servername,$username,$dbpassword,$dbname);
-
-if ($conn -> connect_error) {
-    die("Connection failed: " . $conn -> connect_error);
-}
+include("../config/config.php");
 
 $stmt = $conn->prepare("SELECT funds FROM user WHERE id = ?");
 $stmt->bind_param("i",$_SESSION["id"]);

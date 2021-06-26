@@ -1,5 +1,7 @@
 <?php
 
+include("../config/config.php");
+
 class SummaryJSON {
 
     public $users;
@@ -8,18 +10,7 @@ class SummaryJSON {
     public $pendingTransactions;
 
     function __construct() {
-        
-        $servername = "localhost";
-        $username = "root";
-        $dbpassword = "";
-        $dbname = "cafe";
-
-        $conn = new mysqli($servername,$username,$dbpassword,$dbname);
-
-        if ($conn -> connect_error) {
-            die("Connection failed: " . $conn -> connect_error);
-        }
-
+        global $conn;
         $sql = "SELECT COUNT(id) AS users FROM user";
         $result = $conn->query($sql);
         if ($result->num_rows > 0) {

@@ -1,17 +1,7 @@
 <?php
 
 include("transactionsJSON.php");
-
-$servername = "localhost";
-$username = "root";
-$dbpassword = "";
-$dbname = "cafe";
-
-$conn = new mysqli($servername,$username,$dbpassword,$dbname);
-
-if ($conn -> connect_error) {
-    die("Connection failed: " . $conn -> connect_error);
-}
+include("../config/config.php");
 
 $sql = "SELECT transactions.id AS transactions_id, user.id AS user_id, transactions_status_id AS status_id, 
         first_name, last_name, email, transactions.funds, send_date FROM transactions 

@@ -1,17 +1,7 @@
 <?php
 
 include("ordersJSON.php");
-
-$servername = "localhost";
-$username = "root";
-$dbpassword = "";
-$dbname = "cafe";
-
-$conn = new mysqli($servername,$username,$dbpassword,$dbname);
-
-if ($conn -> connect_error) {
-    die("Connection failed: " . $conn -> connect_error);
-}
+include("../config/config.php");
 
 $sql = "SELECT orders_id, orders_status_id, first_name, last_name, name, amount, date FROM ticket 
         INNER JOIN user ON ticket.user_id = user.id INNER JOIN orders ON ticket.orders_id = orders.id 

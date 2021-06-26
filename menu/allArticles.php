@@ -1,17 +1,7 @@
 <?php
 
 include("articleJSON.php");
-
-$servername = "localhost";
-$username = "root";
-$dbpassword = "";
-$dbname = "cafe";
-
-$conn = new mysqli($servername,$username,$dbpassword,$dbname);
-
-if ($conn -> connect_error) {
-    die("Connection failed: " . $conn -> connect_error);
-}
+include("../config/config.php");
 
 $sql = "SELECT product.id, product.name, product.description, category.name AS category, price, stock, is_discarded 
         FROM product INNER JOIN category ON product.category_id = category.id";

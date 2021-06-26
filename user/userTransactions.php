@@ -1,17 +1,8 @@
 <?php
 
 include("userTransactionsJSON.php");
+include("../config/config.php");
 
-$servername = "localhost";
-$username = "root";
-$dbpassword = "";
-$dbname = "cafe";
-
-$conn = new mysqli($servername,$username,$dbpassword,$dbname);
-
-if ($conn -> connect_error) {
-    die("Connection failed: " . $conn -> connect_error);
-}
 $content = trim(file_get_contents("php://input"));
 $user = json_decode($content,true);
 $stmt = $conn->prepare("SELECT id, transactions_status_id AS status, funds, send_date, path FROM transactions 
@@ -27,7 +18,6 @@ if ($stmt->execute()) {
     }
     echo json_encode($transactions);
 }
-
 
         /*"SELECT transactions.id AS transactions_id, user.id AS user_id, transactions_status_id AS status_id, 
         first_name, last_name, email, transactions.funds, send_date, transactions_image.path FROM transactions 
