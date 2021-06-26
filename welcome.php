@@ -18,7 +18,7 @@
                <main>
                    <div class="jumbotron-fluid py-md-5 px-md-5">
                    <div class="jumbotron-fluid py-md-5 px-md-5">
-                       <div id="wrapper">
+                       <div id="wrapper" class="mainWrapper">
 
                            <?php
                                 $id = $_GET['id'];

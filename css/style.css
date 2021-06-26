@@ -189,6 +189,12 @@ a.nav-link:hover{
     background: none;
 }
 
+@media (max-width: 576px) {
+    .mainWrapper{
+        padding-top: 100px;
+    }
+}
+
 
 @media(min-width:768px) {
     #wrapper {
@@ -212,6 +218,8 @@ a.nav-link:hover{
         margin-right: 0;
     }
 }
+
+
 
 
 /**********************************************************************
