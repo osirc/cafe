@@ -46,7 +46,7 @@
 
             <div class="dropdown-divider mt-5"></div>
             <p class="text-center">Not a memeber?</p>
-            <button type="submit" name="login" id="sign_in" class="btn btn-outline-primary btn-lg btn-block">Sign up</button>
+            <button type="submit" name="login" id="sign_up" class="btn btn-outline-primary btn-lg btn-block" data-toggle="modal" data-target="#registerUser">Sign up</button>
 
             <?php include('./registerUser.php'); ?>
             <?php include('./forgotPassword.php'); ?>

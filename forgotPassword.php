@@ -19,7 +19,7 @@
                         </span>
                             <input class="form-control py-2 border-left-0 border" type="search" id="recoverPasswordEmailInput">
                     </div>
-                    <button type="button" name="resetPasswordButton" id="resetPasswordButton" class="btn btn-outline-primary btn-lg btn-block">Reset Password</button>
+                    <button type="submit" id="resetPasswordButton" class="btn btn-primary float-right">Reset Password</button>
 <!--                </form>-->
             </div>
 <!--            <div class="modal-footer">
