@@ -285,6 +285,13 @@ var {
     max-height: 75px;
     object-fit: cover;
 }
+
+.displayBlockToolTip{
+    display: block !important;
+}
+
+
+
 /**********************************************************************
     End Shopping cart style
 ***********************************************************************/

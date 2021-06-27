@@ -10,7 +10,8 @@
             </div>
             <div class="modal-body">
                 <div class="container-fluid">
-                    <form>
+                    <!-- was-validated   -->
+                    <form id="registerForm">
                         <div class="form-group">
                             <label for="nameInput">Name</label>
                             <div class="input-group pb-md-2 pt-md-2">
@@ -19,7 +20,8 @@
                                         <i class="fa fa-user" aria-hidden="true"></i>
                                     </div>
                                 </span>
-                                <input class="form-control" type="text" id="nameInput">
+                                <input class="form-control" type="text" id="nameInput"/>
+                                <div id="nameToolTip" class=""></div>
                             </div>
                         </div>
 
@@ -32,6 +34,7 @@
                                     </div>
                                 </span>
                                 <input class="form-control" type="text" id="lastnameInput">
+                                <div id="lastnameToolTip" class=""></div>
                             </div>
                         </div>
 
@@ -44,7 +47,9 @@
                                         <i class="fa fa-envelope" aria-hidden="true"></i>
                                     </div>
                                 </span>
-                                <input class="form-control" type="text" id="emailInput" onfocusout="">
+                                <input class="form-control" type="text" id="registerEmailInput">
+                                <div id="emailToolTip" class=""></div>
+
                             </div>
                         </div>
 
@@ -57,12 +62,13 @@
                                         <i class="fa fa-lock" aria-hidden="true"></i>
                                     </div>
                                 </span>
-                                <input class="form-control" type="password" id="passwordInput">
+                                <input class="form-control" type="password" id="registerPasswordInput">
+                                <div id="passwordToolTip" class=""></div>
                             </div>
                         </div>
 
-                        <button id="signInButton" type="text" class="btn btn-primary float-right">Sign in</button>
 
+                        <button id="signUpButtonText" type="text" class="btn btn-primary float-right">Sign up</button>
                     </form>
                 </div>
             </div>
