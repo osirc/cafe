@@ -13,7 +13,9 @@
         }
         ?>
             <div class="card">
-                <img class="card-img-top" src= <?php  echo "'". $articles[$i]->imagePath . "'";?> alt="Card image cap">
+                <div class="text-center">
+                    <img class="img-fluid img-thumbnail" style=" height: auto;" src= <?php  echo "'". $articles[$i]->imagePath . "'";?> alt="Card image cap">
+                </div>
                 <div class="card-body">
                     <h5 class="card-title"><?php echo $articles[$i]->name;  ?></h5>
                     <p class="card-text"><?php echo $articles[$i]->description; ?></p>
@@ -25,7 +27,7 @@
                             <b>$<?php echo $articles[$i]->price;?></b>
                             </div>
                             <div class="col">
-                                <select id=<?php echo "'select" . $articles[$i]->id . "'"; ?> class="custom-select">
+                                <select id=<?php echo "'select" . $articles[$i]->id . "'"; ?> class="custom-select-sm">
                                     <?php
                                     $productStock = $articles[$i]->stock;
                                     for ($j = 1; $j <= $productStock ;$j++) {?>
@@ -34,7 +36,7 @@
                                 </select>
                             </div>
                             <div class="col">
-                                <button type="button" class="btn btn-outline-success float-right" onclick=<?php echo "'addToCart(" . $articles[$i]->id . ")'";  ?>>Agregar</button>
+                                <button type="button" class="btn btn-outline-success btn-sm float-right" onclick=<?php echo "'addToCart(" . $articles[$i]->id . ")'";  ?>>Agregar</button>
                             </div>
                         </div>
                     </div>
