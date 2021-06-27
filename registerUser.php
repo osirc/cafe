@@ -13,7 +13,7 @@
                     <!-- was-validated   -->
                     <form id="registerForm">
                         <div class="form-group">
-                            <label for="nameInput">Name</label>
+                            <label for="nameInput">Nombre(s)</label>
                             <div class="input-group pb-md-2 pt-md-2">
                                 <span class="input-group-prepend">
                                     <div class="input-group-text bg-transparent border-right-0">
@@ -26,7 +26,7 @@
                         </div>
 
                         <div class="form-group">
-                            <label for="nameInput">Lastname</label>
+                            <label for="nameInput">Apellido(s)</label>
                             <div class="input-group pb-md-2 pt-md-2 is-invalid">
                                 <span class="input-group-prepend">
                                     <div class="input-group-text bg-transparent border-right-0">
@@ -40,7 +40,7 @@
 
 
                         <div class="form-group">
-                            <label for="cellphoneInput">Cellphone</label>
+                            <label for="cellphoneInput">Teléfono</label>
                             <div class="input-group pb-md-2 pt-md-2 is-invalid">
                                 <span class="input-group-prepend">
                                     <div class="input-group-text bg-transparent border-right-0">
@@ -68,7 +68,7 @@
 
 
                         <div class="form-group">
-                            <label for="nameInput">Password</label>
+                            <label for="nameInput">Contraseña</label>
                             <div class="input-group pb-md-2 pt-md-2">
                                 <span class="input-group-prepend">
                                     <div class="input-group-text bg-transparent border-right-0">

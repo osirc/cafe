@@ -21,10 +21,19 @@ $stmt->bind_param("s",$email);
 if ($stmt->execute()) {
     $stmt->bind_result($num_rows);
 
+    $servername = "localhost";
+    $username = "root";
+    $dbpassword = "";
+    $dbname = "cafe";
+    
+    $conn = new mysqli($servername,$username,$dbpassword,$dbname);
+    
+    if ($conn -> connect_error) {
+        die("Connection failed: " . $conn -> connect_error);
+    }
     if ($num_rows == 0) {
-        $userType=0;
-        $stmt = $conn->prepare("INSERT INTO user (user_type_id, first_name, last_name, email, password, cellphone) VALUES (?,?,?,?,?,?)");
-        $stmt->bind_param("isssss", $userType,$name, $lastname, $email, $password, $cellphone);
+        $stmt = $conn->prepare("INSERT INTO user (user_type_id, first_name, last_name, email, password, cellphone) VALUES (0,?,?,?,?,?)");
+        $stmt->bind_param("sssss",$name, $lastname, $email, $password, $cellphone);
         echo $stmt->execute();
     } else {
 

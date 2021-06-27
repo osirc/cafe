@@ -11,7 +11,6 @@ if ($result->num_rows > 0) {
     while ($row = $result -> fetch_assoc()) {
         array_push($categories,new categoryJSON($row["name"],$row["description"]));
     }
-    echo json_encode($categories);
 }
 
 ?>

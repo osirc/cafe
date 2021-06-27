@@ -40,13 +40,13 @@
             </form>
 
             <div class="dropdown-divider mt-5"></div>
-            <p class="text-center">Forgot you password?</p>
+            <p class="text-center">¿Olvidaste tu contraseña?</p>
             <button type="submit" name="login" id="sign_in" class="btn btn-outline-primary btn-lg btn-block" 
-            data-toggle="modal" data-target="#forgotPassword">Recover Password</button>
+            data-toggle="modal" data-target="#forgotPassword">Recuperar contraseña</button>
 
             <div class="dropdown-divider mt-5"></div>
-            <p class="text-center">Not a memeber?</p>
-            <button type="submit" name="login" id="sign_up" class="btn btn-outline-primary btn-lg btn-block" data-toggle="modal" data-target="#registerUser">Sign up</button>
+            <p class="text-center">¿No eres miembro aún?</p>
+            <button type="submit" name="login" id="sign_up" class="btn btn-outline-primary btn-lg btn-block" data-toggle="modal" data-target="#registerUser">Registrarse</button>
 
             <?php include('./registerUser.php'); ?>
             <?php include('./forgotPassword.php'); ?>
