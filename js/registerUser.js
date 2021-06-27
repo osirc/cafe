@@ -39,8 +39,17 @@ $(function(){
             console.log("password invalido");
         }
 
+    });
 
-        console.log("done");
+    $( "#closeRegisterUser" ).click(function( event ) {
+
+        var invalidFeedback= "invalid-feedback";
+        var blockTooltip = "displayBlockToolTip";
+
+        $("#nameToolTip").removeClass(invalidFeedback).removeClass(blockTooltip).empty();
+        $("#lastnameToolTip").removeClass(invalidFeedback).removeClass(blockTooltip).empty("");
+        $("#emailToolTip").removeClass(invalidFeedback).removeClass(blockTooltip).empty("");
+        $("#passwordToolTip").removeClass(invalidFeedback).removeClass(blockTooltip).empty("");
 
     });
 });
