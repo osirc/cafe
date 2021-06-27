@@ -3,7 +3,7 @@
     <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLongTitle">Modal title</h5>
+                <h5 class="modal-title" id="exampleModalLongTitle">Registro de Usuario</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
@@ -19,19 +19,19 @@
                                         <i class="fa fa-user" aria-hidden="true"></i>
                                     </div>
                                 </span>
-                                <input class="form-control py-2 border-left-0 border" type="text" id="nameInput">
+                                <input class="form-control" type="text" id="nameInput">
                             </div>
                         </div>
 
                         <div class="form-group">
                             <label for="nameInput">Lastname</label>
-                            <div class="input-group pb-md-2 pt-md-2">
+                            <div class="input-group pb-md-2 pt-md-2 is-invalid">
                                 <span class="input-group-prepend">
                                     <div class="input-group-text bg-transparent border-right-0">
                                         <i class="fa fa-user" aria-hidden="true"></i>
                                     </div>
                                 </span>
-                                <input class="form-control py-2 border-left-0 border" type="text" id="lastnameInput">
+                                <input class="form-control" type="text" id="lastnameInput">
                             </div>
                         </div>
 
@@ -44,7 +44,7 @@
                                         <i class="fa fa-envelope" aria-hidden="true"></i>
                                     </div>
                                 </span>
-                                <input class="form-control py-2 border-left-0 border" type="search" id="emailInput">
+                                <input class="form-control" type="text" id="emailInput" onfocusout="">
                             </div>
                         </div>
 
@@ -57,11 +57,11 @@
                                         <i class="fa fa-lock" aria-hidden="true"></i>
                                     </div>
                                 </span>
-                                <input class="form-control py-2 border-left-0 border" type="password" id="passwordInput">
+                                <input class="form-control" type="password" id="passwordInput">
                             </div>
                         </div>
 
-                        <button type="submit" class="btn btn-primary float-right">Sign in</button>
+                        <button id="signInButton" type="text" class="btn btn-primary float-right">Sign in</button>
 
                     </form>
                 </div>
