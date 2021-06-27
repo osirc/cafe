@@ -53,23 +53,41 @@
 </div>
 
 <form action="user/addTransaction.php" method="POST" enctype="multipart/form-data">
-            <table>
-                <tr>
-                <td>
-                    <label for="imagen">Imagen</label>
-                </td>
-                <td>
-                    <input type="file" name="image" size="20">
-                </td>
-                </tr>
-                <tr>
-                <td>
-                    <input type="text" name="amount">
-                </td>    
-                </tr>
-                <tr>
-                <td colspan="2" style="text-align:center">
-                    <input type="submit" value="Enviar imagen">
-                </td>
-                </tr>
-            </table>
+    <div class="form-group">
+        <label for="exampleInputEmail1">Imagen</label>
+        <input type="file" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
+    </div>
+
+    <div class="form-group">
+        <label for="exampleInputEmail1">Imagen</label>
+        <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
+    </div>
+
+
+    <button type="submit" class="btn btn-primary float-right">Enviar imagen</button>
+</form>
+
+
+
+<!--
+<table>
+    <tr>
+        <td>
+            <label for="imagen">Imagen</label>
+        </td>
+        <td>
+            <input type="file" name="image" size="20">
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <input type="text" name="amount">
+        </td>
+    </tr>
+    <tr>
+        <td colspan="2" style="text-align:center">
+            <input type="submit" value="Enviar imagen">
+        </td>
+    </tr>
+</table>
+-->

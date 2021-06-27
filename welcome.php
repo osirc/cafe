@@ -11,7 +11,7 @@
            <?php include('./sideBar/leftSideBar.php') ?>
 
            <!-- Page Content -->
-           <div id="content">
+           <div id="content" class="container-fluid">
                <!-- We'll fill this with dummy content -->
 
                <?php include('./sideBar/topSideBar.php') ?>
