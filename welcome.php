@@ -37,7 +37,7 @@
                                        include ('./users/transactions.php');
                                        break;
                                    case 5:
-                                       include ('./admin/summary.php');
+                                       include ('./admin/allTransactions.php');
                                        break;
                                }
                            ?>

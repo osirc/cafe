@@ -14,7 +14,6 @@ if ($stmt->execute()) {
         array_push($cart,new CartJSON($row["id"],$row["name"],$row["price"],$row["amount"],
                     $row["path"]));
     }
-    $userCart =  json_encode($cart,JSON_UNESCAPED_UNICODE);
 }
 
 /*"SELECT product.id, name, price, amount FROM cart INNER JOIN product ON 

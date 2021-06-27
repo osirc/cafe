@@ -34,7 +34,7 @@ class SummaryJSON {
             }
         }
         $sql = "SELECT SUM(price * amount) AS profits FROM ticket INNER JOIN orders ON orders_id = orders.id WHERE 
-                DATEDIFF(CURDATE(),date) <= 30 AND orders_status_id = 1";
+                DATEDIFF(CURDATE(),date) <= 30 AND orders_status_id = 2";
         $result = $conn->query($sql);
         if ($result->num_rows > 0) {
             if($row = $result -> fetch_assoc()) {

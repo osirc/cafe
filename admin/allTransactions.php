@@ -63,7 +63,7 @@ if ($result->num_rows > 0) {
                                     break;
                                 }?></td>
                     <td><?php echo $transaction["sendDate"]; ?></td>
-                    <td><img src=<?php echo "'images/transactions/" . $transaction["imagePath"] . "'";?>></td>
+                    <td><img src=<?php echo "'images/transactions/" . $transaction["imagePath"] . "'";?> style="max-width: 25% !important;"></td>
                     <td><button type="button" class="btn btn-outline-success float-right" onclick=<?php echo "'UpdateTransaction(" . $transaction["id"] . "," . $transaction["funds"] . "," . $transaction["userID"] . ",1)'";  ?>>Aceptar</button><br>
                         <button type="button" class="btn btn-outline-danger btn-xs" onclick=<?php echo "'UpdateTransaction(" . $transaction["id"] . "," . $transaction["funds"] . "," . $transaction["userID"] . ",2)'";  ?>>Rechazar</button></td>
                 </tr>    
@@ -122,6 +122,7 @@ if ($result->num_rows > 0) {
         })
         .then(data => {
                 alert(`Estado:${STATUSID}\nData: ${data}`);
+                window.location.reload(true);
             }
         )
         .catch(err=>{

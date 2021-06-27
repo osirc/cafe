@@ -2,8 +2,7 @@
 
     <?php
     include("./menu/allArticles.php");
-    $products = json_decode($allArticles,true);
-    $productNum = count($products);
+    $productNum = count($articles);
 
     for ($i = 0 ; $i < $productNum ; $i++) {
         if ($i % 3 == 0) {
@@ -12,27 +11,30 @@
                 <div class="card-deck">
             <?php
         }
-        ?> 
+        ?>
             <div class="card">
-                <img class="card-img-top" src= <?php echo "'". $products[$i]["imagePath"] . "'"; ?> alt="Card image cap">
+                <img class="card-img-top" src= <?php echo "'". $articles[$i]->imagePath . "'"; ?> alt="Card image cap">
                 <div class="card-body">
-                    <h5 class="card-title"><?php echo $products[$i]["name"];  ?></h5>
-                    <p class="card-text"><?php echo $products[$i]["description"]; ?></p>
+                    <h5 class="card-title"><?php echo $articles[$i]->name;  ?></h5>
+                    <p class="card-text"><?php echo $articles[$i]->description; ?></p>
                 </div>
                 <div class="card-footer">
                     <div class="container">
                         <div class="row float-right">
+                        <div class="col">
+                            <b>$<?php echo $articles[$i]->price;?></b>
+                            </div>
                             <div class="col">
-                                <select id=<?php echo "'select" . $products[$i]["id"] . "'" ?> class="custom-select">
+                                <select id=<?php echo "'select" . $articles[$i]->id . "'"; ?> class="custom-select">
                                     <?php
-                                    $productStock = $products[$i]["stock"];
-                                    for ($j = 1;$j <= $productStock ;$j++) {?>
-                                    <option><?php echo $j ?></option>
+                                    $productStock = $articles[$i]->stock;
+                                    for ($j = 1; $j <= $productStock ;$j++) {?>
+                                    <option><?php echo $j; ?></option>
                                     <?php }?>
                                 </select>
                             </div>
                             <div class="col">
-                                <button type="button" class="btn btn-outline-success float-right" onclick=<?php echo "'addToCart(" . $products[$i]["id"] . ")'";  ?>>Agregar</button>
+                                <button type="button" class="btn btn-outline-success float-right" onclick=<?php echo "'addToCart(" . $articles[$i]->id . ")'";  ?>>Agregar</button>
                             </div>
                         </div>
                     </div>
@@ -41,7 +43,7 @@
         <?php
         if($i % 3 == 2) {
         ?>
-        </div>
+            </div>
         </div>
         <?php
         }

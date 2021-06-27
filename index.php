@@ -41,7 +41,8 @@
 
             <div class="dropdown-divider mt-5"></div>
             <p class="text-center">Forgot you password?</p>
-            <button type="submit" name="login" id="sign_in" class="btn btn-outline-primary btn-lg btn-block" data-toggle="modal" data-target="#forgotPassword">Recover Password</button>
+            <button type="submit" name="login" id="sign_in" class="btn btn-outline-primary btn-lg btn-block" 
+            data-toggle="modal" data-target="#forgotPassword">Recover Password</button>
 
             <div class="dropdown-divider mt-5"></div>
             <p class="text-center">Not a memeber?</p>

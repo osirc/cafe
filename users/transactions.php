@@ -13,6 +13,8 @@
             <tbody>
             <?php
             include("./user/userTransactions.php");
+            include("./user/userFunds.php");
+            echo "Tus fondos: " .$funds;
             $transactions = json_decode($transactions,true);
             foreach($transactions as $transaction) {
             ?>
@@ -31,7 +33,7 @@
                                 break;    
                 } ?></td>
                 <td><?php echo $transaction["sendDate"]; ?></td>
-                <td><img src=<?php echo "'images/transactions/" . $transaction["imagePath"] . "'";?>></td>
+                <td><img src=<?php echo "'images/transactions/" . $transaction["imagePath"] . "'";?> style="max-width: 25% !important;"></td>
             </tr>    
             <?php
             } //for end
@@ -40,3 +42,25 @@
         </table>
     </div>
 </div>
+
+<form action="user/addTransaction.php" method="POST" enctype="multipart/form-data">
+            <table>
+                <tr>
+                <td>
+                    <label for="imagen">Imagen</label>
+                </td>
+                <td>
+                    <input type="file" name="image" size="20">
+                </td>
+                </tr>
+                <tr>
+                <td>
+                    <input type="text" name="amount">
+                </td>    
+                </tr>
+                <tr>
+                <td colspan="2" style="text-align:center">
+                    <input type="submit" value="Enviar imagen">
+                </td>
+                </tr>
+            </table>

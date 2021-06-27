@@ -33,5 +33,14 @@
         $(".myNavItem").click(function(event) {
             $( "a.myNavItem.active" ).removeClass( "active" );
         });
+
+        
+
+        $("#shoppingCartElement").click(function(e) {
+            var el=this.id();
+            console.log('hi >>>>'+el )
+            
+        });
+
     });
 </script>

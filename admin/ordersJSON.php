@@ -1,6 +1,6 @@
 <?php
 
-class ordersJSON {
+class OrdersJSON {
 
     public $id;
     public $statusID;

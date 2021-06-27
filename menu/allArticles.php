@@ -14,7 +14,6 @@ if ($result->num_rows > 0) {
         array_push($articles,new ArticleJSON($row["id"],$row["name"],$row["description"],$row["category"],
                     $row["price"],$row["stock"],$row["is_discarded"],$row["path"]));
     }
-    $allArticles = json_encode($articles,JSON_UNESCAPED_UNICODE);
 }
 
 /* "SELECT product.id, product.name, product.description, category.name AS category, price, stock, is_discarded 

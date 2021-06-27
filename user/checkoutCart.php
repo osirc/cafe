@@ -69,6 +69,7 @@ if ($funds >= $totalPrice) {
             $stmt = $conn->prepare("UPDATE product SET stock = ? WHERE id = ?");
             $leftStock = $product->stock - $product->amount;
             $stmt->bind_param("ii",$leftStock,$product->id);
+            $stmt->execute();
         }
         
         $stmt = $conn->prepare("DELETE FROM cart WHERE user_id = ?");
