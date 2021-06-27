@@ -15,7 +15,6 @@ class UserTransactionsJSON {
         $this->funds = $funds;
         $this->sendDate = $sendDate;
         $this->imagePath = $imagePath;
-
     }
 
 }

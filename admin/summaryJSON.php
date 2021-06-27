@@ -1,6 +1,6 @@
 <?php
 
-include("../config/config.php");
+//include("../config/config.php");
 
 class SummaryJSON {
 
@@ -16,7 +16,6 @@ class SummaryJSON {
         if ($result->num_rows > 0) {
             if($row = $result -> fetch_assoc()) {
                 $this->users = $row["users"];
-                echo "Users: " . $this->users . "\n";
             }
         }
             
@@ -25,7 +24,6 @@ class SummaryJSON {
         if ($result->num_rows > 0) {
             if($row = $result -> fetch_assoc()) {
                 $this->products = $row["products"];
-                echo "Articles: " .$this->products . "\n";
             }
         }
         $sql = "SELECT COUNT(id) AS transactions FROM transactions WHERE transactions_status_id = 0";
@@ -33,7 +31,6 @@ class SummaryJSON {
         if ($result->num_rows > 0) {
             if($row = $result -> fetch_assoc()) {
                 $this->pendingTransactions = $row["transactions"];
-                echo "Pending transactions: " .$this->pendingTransactions . "\n";
             }
         }
         $sql = "SELECT SUM(price * amount) AS profits FROM ticket INNER JOIN orders ON orders_id = orders.id WHERE 
@@ -42,7 +39,6 @@ class SummaryJSON {
         if ($result->num_rows > 0) {
             if($row = $result -> fetch_assoc()) {
                 $this->profits = $row["profits"];
-                echo "Profits: " .$this->profits . "\n";
             }
         }      
     }

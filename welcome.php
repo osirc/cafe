@@ -4,9 +4,7 @@
 <head>
     <?php include('./header.php') ?>
     <?php include('./checkLogin.php') ?>
-    <?php include("./user/userCart.php")?>
-    <?php include("./menu/allArticles.php")?>
-    <?php include("./user/userTransactions.php")?>
+    <?php ?>
 </head>
    <body>
        <div class="wrapper">
@@ -27,19 +25,19 @@
                                 $id = $_GET['id'];
                                switch ($id) {
                                    case 1:
-                                        include ('./products/productsGallery.php');
+                                        include ('./users/productsGallery.php');
                                        break;
                                    case 2:
-                                       echo "i es igual a 1";
+                                        include ('./users/orders.php');
                                        break;
                                    case 3:
-                                       include ('./shopping/shoppingCar.php');
+                                       include ('./users/shoppingCar.php');
                                        break;
                                    case 4:
                                        include ('./users/transactions.php');
                                        break;
                                    case 5:
-                                       include ('./users/registerUser.php');
+                                       include ('./admin/summary.php');
                                        break;
                                }
                            ?>

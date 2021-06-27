@@ -7,7 +7,7 @@ class CartProduct {
     public $amount;
     public $stock;
 
-    function __construct($id,$price,$amount) {
+    function __construct($id,$price,$amount,$stock) {
         $this->id = $id;
         $this->price = $price;
         $this->amount = $amount;
