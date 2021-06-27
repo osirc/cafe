@@ -40,6 +40,19 @@
 
 
                         <div class="form-group">
+                            <label for="cellphoneInput">Cellphone</label>
+                            <div class="input-group pb-md-2 pt-md-2 is-invalid">
+                                <span class="input-group-prepend">
+                                    <div class="input-group-text bg-transparent border-right-0">
+                                        <i class="fa fa-phone" aria-hidden="true"></i>
+                                    </div>
+                                </span>
+                                <input class="form-control" type="text" id="cellphoneInput">
+                                <div id="cellphoneToolTip" class=""></div>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
                             <label for="nameInput">Email</label>
                             <div class="input-group pb-md-2 pt-md-2">
                                 <span class="input-group-prepend">
