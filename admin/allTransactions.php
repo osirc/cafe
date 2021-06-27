@@ -23,7 +23,10 @@ if ($result->num_rows > 0) {
         INNER JOIN user ON transactions.user_id = user.id"*/
         /*" */
 ?>
-
+<div class="card-header bg-dark text-light text-center">
+    Transacciones
+    <div class="clearfix"></div>
+</div>
 <div class="container-fluid">
     <div class="table-responsive">
         <table class="table">
@@ -44,7 +47,6 @@ if ($result->num_rows > 0) {
             $transactions = json_decode($transactions,true);
             
             foreach($transactions as $transaction) {
-                if($transaction["statusID"]==0){
             ?>
                 <tr>
                     <th scope="row"><?php echo $transaction["id"]; ?></th>
@@ -64,36 +66,10 @@ if ($result->num_rows > 0) {
                                 }?></td>
                     <td><?php echo $transaction["sendDate"]; ?></td>
                     <td><img src=<?php echo "'images/transactions/" . $transaction["imagePath"] . "'";?> style="max-width: 25% !important;"></td>
-                    <td><button type="button" class="btn btn-outline-success float-right" onclick=<?php echo "'UpdateTransaction(" . $transaction["id"] . "," . $transaction["funds"] . "," . $transaction["userID"] . ",1)'";  ?>>Aceptar</button><br>
-                        <button type="button" class="btn btn-outline-danger btn-xs" onclick=<?php echo "'UpdateTransaction(" . $transaction["id"] . "," . $transaction["funds"] . "," . $transaction["userID"] . ",2)'";  ?>>Rechazar</button></td>
+                    <td><button type="button" class="btn btn-outline-success float-right" onclick=<?php echo "'UpdateTransaction(" . $transaction["id"] . "," . $transaction["funds"] . "," . $transaction["userID"] . ",1)'"; echo ($transaction["statusID"]==0) ? "" : "disabled"; ?>>Aceptar</button><br>
+                        <button type="button" class="btn btn-outline-danger btn-xs" onclick=<?php echo "'UpdateTransaction(" . $transaction["id"] . "," . $transaction["funds"] . "," . $transaction["userID"] . ",2)'"; echo ($transaction["statusID"]==0) ? "" : "disabled"; ?>>Rechazar</button></td>
                 </tr>    
             <?php
-                }
-                else{
-            ?>
-                <tr>
-                    <th scope="row"><?php echo $transaction["id"]; ?></th>
-                    <td><?php echo $transaction["firstName"]; ?></td>
-                    <td><?php echo $transaction["email"]; ?></td>
-                    <td>$<?php echo $transaction["funds"]; ?></td>
-                    <td><?php switch($transaction["statusID"]) {
-                                case 0:
-                                    echo "Pendiente";
-                                    break;
-                                case 1;
-                                    echo "Aceptada";
-                                    break;
-                                case 2:
-                                    echo "Rechazada";
-                                    break;
-                                }?></td>
-                    <td><?php echo $transaction["sendDate"]; ?></td>
-                    <td><img src=<?php echo "'images/transactions/" . $transaction["imagePath"] . "'";?>></td>
-                    <td><button type="button" class="btn btn-outline-success float-right" disabled>Aceptar</button><br>
-                        <button type="button" class="btn btn-outline-danger btn-xs" disabled>Rechazar</button></td>
-                </tr>  
-            <?php
-                }
             } //for end
             ?>
             </tbody>

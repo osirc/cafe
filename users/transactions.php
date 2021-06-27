@@ -1,20 +1,24 @@
 <div class="container-fluid">
     <div class="table-responsive">
+        <div class="card-header bg-dark text-light text-center">
+            Mis transacciones
+            <div class="clearfix"></div>
+        </div>
         <table class="table">
             <thead>
             <tr>
-                <th scope="col">id</th>
-                <th scope="col">Funds</th>
-                <th scope="col">Status</th>
-                <th scope="col">sendDate</th>
-                <th scope="col">image</th>
+                <th scope="col">ID</th>
+                <th scope="col">Fondos</th>
+                <th scope="col">Estatus</th>
+                <th scope="col">Fecha de envio</th>
+                <th scope="col">Imagen</th>
             </tr>
             </thead>
             <tbody>
             <?php
             include("./user/userTransactions.php");
             include("./user/userFunds.php");
-            echo "Tus fondos: " .$funds;
+            
             $transactions = json_decode($transactions,true);
             foreach($transactions as $transaction) {
             ?>
@@ -41,6 +45,11 @@
             </tbody>
         </table>
     </div>
+</div>
+<hr>
+<div class="card-header bg-dark text-light text-center" id="saldo">
+<?php echo "Mis fondos: $" .$funds;?>
+    <div class="clearfix"></div>
 </div>
 
 <form action="user/addTransaction.php" method="POST" enctype="multipart/form-data">

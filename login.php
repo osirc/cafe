@@ -23,7 +23,7 @@ if(isset($_POST['login'])) {
                     $_SESSION['user'] = serialize($user);
                     $_SESSION['id'] = $row['id'];
                     $_SESSION['name'] = $row['first_name'];
-                   // $_SESSION['username'] = $row['username'];
+                    $_SESSION['type'] = $row['user_type_id'];
                     $_SESSION['lastname'] = $row['last_name'];
                     //$_SESSION['second_lastname'] = $row['second_lastname'];
                     $_SESSION['email'] =  $row['email'];

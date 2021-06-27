@@ -4,7 +4,7 @@ include("admin/ordersJSON.php");
 
 $sql = "SELECT orders_id, orders_status_id, first_name, last_name, name, amount, date FROM ticket 
         INNER JOIN user ON ticket.user_id = user.id INNER JOIN orders ON ticket.orders_id = orders.id 
-        INNER JOIN product ON ticket.product_id = product.id";
+        INNER JOIN product ON ticket.product_id = product.id ORDER BY orders_status_id";
 $result = $conn->query($sql);
 
 if ($result->num_rows > 0) {
@@ -18,6 +18,10 @@ if ($result->num_rows > 0) {
 }
 
 ?>
+<div class="card-header bg-dark text-light text-center">
+    Ordenes de cocina
+    <div class="clearfix"></div>
+</div>
             <?php
             $orderNum = 0;
             foreach($orders as $order) {
@@ -52,12 +56,13 @@ if ($result->num_rows > 0) {
                     <td></td>
                     <td></td>
                     <td></td>     
-                <td><button type="button" class="btn btn-outline-success float-right" onclick=<?php echo "'updateOrder(" . $orderNum . ",2)'";  ?>>Aceptar</button></td>
+                <td><button type="button" class="btn btn-outline-success float-right" onclick=<?php echo "'updateOrder(" . $orderNum . ",2)'"; echo ($order->statusID == 2) ? "disabled" : "" ; ?>>Aceptar</button></td>
                 </tr>
                 </tbody>
         </table>
     </div>
 </div>
+<hr>
 <div class="container-fluid">
                     <div class="table-responsive">
                         <table class="table">
@@ -106,12 +111,13 @@ if ($result->num_rows > 0) {
                     <td></td>
                     <td></td>
                     <td></td>  
-                    <td><button type="button" class="btn btn-outline-success float-right" onclick=<?php echo "'updateOrder(" . $orders[count($orders)-1]->id . ",2)'";  ?>>Aceptar</button></td>
+                    <td><button type="button" class="btn btn-outline-success float-right" onclick=<?php echo "'updateOrder(" . $orders[count($orders)-1]->id . ",2)'"; echo ($orders[count($orders)-1]->statusID == 2) ? "disabled" : "" ; ?>>Aceptar</button></td>
             </tr>
                 </tbody>
         </table>
     </div>
 </div>
+<hr>
             <?php
             }
             ?>

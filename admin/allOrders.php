@@ -18,7 +18,10 @@ if ($result->num_rows > 0) {
 }
 
 ?>
-
+<div class="card-header bg-dark text-light text-center">
+    Ordenes
+    <div class="clearfix"></div>
+</div>
 <div class="container-fluid">
     <div class="table-responsive">
         <table class="table">

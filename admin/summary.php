@@ -4,7 +4,10 @@ include("summaryJSON.php");
 
 
 ?>
-
+<div class="card-header bg-dark text-light text-center">
+    Resumen general
+    <div class="clearfix"></div>
+</div>
 <div class="container-fluid">
     <div class="table-responsive">
         <table class="table">

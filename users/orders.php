@@ -11,6 +11,10 @@ if ($stmt->execute()) {
         if ($orderNum == 0) {
             $orderNum = $row["orders_id"];
 ?>
+<div class="card-header bg-dark text-light text-center">
+Mis ordenes
+<div class="clearfix"></div>
+</div>
 <div class="container-fluid">
     <div class="table-responsive">
         <table class="table">
@@ -32,6 +36,7 @@ if ($stmt->execute()) {
             </table>
         </div>
     </div>
+    <hr>
     <div class="container-fluid">
                         <div class="table-responsive">
                             <table class="table">
@@ -63,9 +68,10 @@ if ($stmt->execute()) {
                     <td><?php echo $row["date"]; ?></td>
                     </tr>
                     <?php
-                }
+                } // while end
             }?>
             </tbody>
         </table>
     </div>
 </div>
+<hr>

@@ -34,7 +34,7 @@
                                 </select>
                             </div>
                             <div class="col">
-                                <button type="button" class="btn btn-outline-success float-right" onclick=<?php echo "'addToCart(" . $articles[$i]->id . ")'";  ?>>Agregar</button>
+                                <button type="button" class="btn btn-outline-success float-right" onclick=<?php echo "'editProduct(" . $articles[$i]->id . ")'";  ?>>Editar</button>
                             </div>
                         </div>
                     </div>
@@ -51,53 +51,38 @@
         ?>   
 </div>
 <script>
-    function addToCart(productID) {
-        var amount = document.getElementById("select" + (productID)).value;
-        let request = {
-        id: productID,
-        amount: parseInt(amount,10),
-        }
-
-        fetch("./user/addToCart.php", {
-            method: 'POST',
-            headers: new Headers({"Content-Type": `application/json;charset=utf-8`,}),
-            body: JSON.stringify(request)
-        })
-        .then(response => {
-        if (response.ok) {
-            return response.text();
-        } else{
-            document.getElementById("idModalBody").innerHTML = "<p>Ocurrió un error, por favor inténtelo de nuevo</p>";
-            $("#cartUpdate").modal();
-            return null;
-            }
-        })
-        .then(data => {
-            var message;
-            if (data == 1) {
-                message = "El articulo fue enviado exitosamente al carrito de compras"
-            }
-            document.getElementById("idModalBody").innerHTML = "<p>" + message + "</p>";
-            $("#cartUpdate").modal();
-            //alert(data);
-            }
-        )
-        .catch(err=>{
-                console.error(err);
-            }
-        );
+    function editProduct(productID) {
+        $("#productUpdate").modal();
     }
 </script>
-<div class="modal fade" id="cartUpdate" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+<div class="modal fade" id="productUpdate" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLongTitle">Carrito de compras</h5>
+                <h5 class="modal-title" id="exampleModalLongTitle">Actualizar producto</h5>
                 <button id="closeForgotPassword" type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
             <div id="idModalBody" class="modal-body">
+            <form>
+                <div class="form-group">
+                    <label for="recipient-name" class="col-form-label">Nombre</label>
+                    <input type="text" class="form-control" id="recipient-name">
+                </div>
+                <div class="form-group">
+                    <label for="message-text" class="col-form-label">Description</label>
+                    <textarea class="form-control" id="message-text"></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="message-text" class="col-form-label">Precio</label>
+                    <textarea class="form-control" id="message-text"></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="message-text" class="col-form-label">Stock</label>
+                    <textarea class="form-control" id="message-text"></textarea>
+                </div>
+            </form>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>

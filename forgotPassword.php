@@ -3,14 +3,14 @@
     <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLongTitle">Recover Password</h5>
+                <h5 class="modal-title" id="exampleModalLongTitle">Recuperar Contraseña</h5>
                 <button id="closeForgotPassword" type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
             <div id="idModalBody" class="modal-body">
                 <!--<form id="resetPassword" action="" method="">-->
-                    <p>Write tou email</p>
+                    <p>Escribe tu email</p>
                     <div class="input-group pb-md-2 pt-md-2">
                         <span class="input-group-prepend">
                             <div class="input-group-text bg-transparent border-right-0">
@@ -19,7 +19,7 @@
                         </span>
                             <input class="form-control py-2 border-left-0 border" type="search" id="recoverPasswordEmailInput">
                     </div>
-                    <button type="submit" id="resetPasswordButton" class="btn btn-primary float-right">Reset Password</button>
+                    <button type="submit" id="resetPasswordButton" class="btn btn-primary float-right">Resestablecer contraseña</button>
 <!--                </form>-->
             </div>
 <!--            <div class="modal-footer">

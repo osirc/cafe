@@ -23,23 +23,53 @@
 
                            <?php
                                 $id = $_GET['id'];
-                               switch ($id) {
-                                   case 1:
-                                        include ('./users/productsGallery.php');
-                                       break;
-                                   case 2:
-                                        include ('./users/orders.php');
-                                       break;
-                                   case 3:
-                                       include ('./users/shoppingCar.php');
-                                       break;
-                                   case 4:
-                                       include ('./users/transactions.php');
-                                       break;
-                                   case 5:
-                                       include ('./admin/allTransactions.php');
-                                       break;
-                               }
+                                switch($_SESSION["type"]) {
+                                    case 0:
+                                        switch ($id) {
+                                            case 1:
+                                                 include ('./users/productsGallery.php');
+                                                break;
+                                            case 2:
+                                                 include ('./users/orders.php');
+                                                break;
+                                            case 3:
+                                                include ('./users/shoppingCar.php');
+                                                break;
+                                            case 4:
+                                                include ('./users/transactions.php');
+                                                break;
+                                            case 5:
+                                                include ('./admin/allTransactions.php');
+                                                break;
+                                        }
+                                    break;
+                                    case 1:
+                                        switch ($id) {
+                                            case 1:
+                                                include ('./chef/chefOrders.php');
+                                                break;
+                                        }
+                                    break;
+                                    case 2:
+                                        switch ($id) {
+                                            case 1:
+                                                 include ('./admin/adminMenu.php');
+                                                break;
+                                            case 2:
+                                                 include ('./admin/allOrders.php');
+                                                break;
+                                            case 3:
+                                                include ('./admin/summary.php');
+                                                break;
+                                            case 4:
+                                                include ('./admin/allTransactions.php');
+                                                break;
+                                            case 5:
+                                                include ('./admin/dailyReport.php');
+                                                break;
+                                        }
+                                    break;
+                                }
                            ?>
                         </div>
                    </div>

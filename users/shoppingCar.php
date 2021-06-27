@@ -2,8 +2,8 @@
     <div class="card shopping-cart">
         <div class="card-header bg-dark text-light">
             <i class="fa fa-shopping-cart" aria-hidden="true"></i>
-            Shopping cart
-            <a href="" class="btn btn-outline-info btn-sm pull-right">Continue shopping</a>
+            Carrito de compras
+            <a href="../cafe/welcome.php?id=1&active=1" class="btn btn-outline-info btn-sm pull-right">Seguir comprando</a>
             <div class="clearfix"></div>
         </div>
         <div class="card-body">
@@ -15,7 +15,7 @@
             ?>
             <div class="row" id='row_<?php echo  $product->productID; ?>_div'>
                 <div class="col-12 col-sm-12 col-md-2 text-center">
-                    <img class="img-responsive" src=<?php echo "'" . $product->imagePath . "'";  ?> alt="prewiew" style="max-width: 25% !important;">
+                    <img class="img-responsive" src=<?php echo "'" . $product->imagePath . "'";  ?> alt="prewiew" style="max-width: 50% !important;">
                 </div>
                 <div class="col-12 text-sm-center text-md-left col-md-6">
                     <figcaption class="media-body">
@@ -71,12 +71,6 @@
         <div class="card-footer">
             <div class="coupon col-md-5 col-sm-5 no-padding-left pull-left">
                 <div class="row">
-                    <div class="col-6">
-                        <input type="text" class="form-control" placeholder="cupone code">
-                    </div>
-                    <div class="col-6">
-                        <input type="submit" class="btn btn-default" value="Use cupone">
-                    </div>
                 </div>
             </div>
             <div class="pull-right" style="margin: 10px">
@@ -95,6 +89,20 @@
                         }
                     }
                     echo "$" .$totalPrice;
+                    ?></b>
+                </div>
+                <div class="pull-right" style="margin: 5px">
+                    Mis fondos: <b id="my_funds"><?php
+                    $stmt = $conn->prepare("SELECT funds FROM user WHERE id = ?");
+                    $stmt->bind_param("i",$_SESSION["id"]);
+                    $funds = 0;
+                    if ($stmt->execute()) {
+                        $result = $stmt->get_result();
+                        if ($row = $result -> fetch_assoc()) {
+                            $funds = $row["funds"];
+                        }
+                    }
+                    echo "$" .$funds;
                     ?></b>
                 </div>
             </div>
@@ -126,7 +134,9 @@
             }
         })
         .then(data => {
-                alert(data);
+            document.getElementById("exampleModalLongTitle").innerHTML = "Porducto eliminado";
+            document.getElementById("idModalBody").innerHTML = "<p>Artículo eliminado exitosamente</p>";
+            $("#cartUpdate").modal();
             }
         )
         .catch(err=>{
@@ -149,7 +159,14 @@
             }
         })
         .then(data => {
-                alert(data);
+            if (data == "1") {
+                document.getElementById("exampleModalLongTitle").innerHTML = "¡Felicidades!";
+                document.getElementById("idModalBody").innerHTML = "<p>" + data + "</p>";
+            } else {
+                document.getElementById("exampleModalLongTitle").innerHTML = "Error";
+                document.getElementById("idModalBody").innerHTML = "<p>" + data + "</p>";
+            }
+            $("#cartUpdate").modal();
             }
         )
         .catch(err=>{
@@ -158,3 +175,20 @@
         );
     }
 </script>
+<div class="modal fade" id="cartUpdate" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLongTitle"></h5>
+                <button id="closeForgotPassword" type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div id="idModalBody" class="modal-body">
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
