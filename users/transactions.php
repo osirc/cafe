@@ -55,16 +55,16 @@
 <form action="user/addTransaction.php" method="POST" enctype="multipart/form-data">
     <div class="form-group">
         <label for="exampleInputEmail1">Imagen</label>
-        <input type="file" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
+        <input type="file" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name="image">
     </div>
 
     <div class="form-group">
-        <label for="exampleInputEmail1">Imagen</label>
-        <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
+        <label for="exampleInputEmail1">Cantidad</label>
+        <input type="number" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Ingresa aquí el monto del voucher" name="amount">
     </div>
 
 
-    <button type="submit" class="btn btn-primary float-right">Enviar imagen</button>
+    <button type="submit" class="btn btn-primary float-right">Enviar transacción</button>
 </form>
 
 

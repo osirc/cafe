@@ -32,11 +32,11 @@
                 </div>
 
                 <div class="col-2 col-sm-2 col-md-1 text-sm-center row">
-                    <select id= <?php echo "'select" . $product->productID . "'" ?> class="form-control">
+                    <select id= <?php echo "'select" . $product->productID . "'" ?> class="custom-select-sm" onchange=<?php echo "'updateCart(" . $product->productID . ",this.selectedIndex+1)'" ?>>
                                     <?php
                                     $productAmount = $product->amount;
-                                    for ($j = 1;$j <= $productAmount ;$j++) {?>
-                                    <option <?php if ($j == $productAmount) echo "selected='selected'"; ?>><?php echo $j ?></option>
+                                    for ($j = 1; $j <= $product->stock; $j++) {?>
+                                    <option <?php if ($j == $productAmount) echo "selected"; ?>><?php echo $j ?></option>
                                     <?php }?>
                     </select>
                 </div>
@@ -60,11 +60,6 @@
             }   //end for
             ?>
             <!-- END PRODUCT -->
-            <div class="pull-right">
-                <a href="" class="btn btn-outline-secondary pull-right">
-                    Update shopping cart
-                </a>
-            </div>
         </div>
 
 
@@ -173,6 +168,34 @@
                 console.error(err);
             }
         );
+    }
+
+    function updateCart(productID,amount) {
+        let request = {
+            id: productID,
+            amount: amount
+        };
+        fetch("./user/updateCart.php", {
+            method: 'POST',
+            headers: new Headers({"Content-Type": `application/json;charset=utf-8`,}),
+            body: JSON.stringify(request)
+        })
+        .then(response => {
+        if (response.ok) {
+            return response.text();
+        } else{
+            alert(`Ocurrió un error, por favor inténtelo de nuevo`);
+            return null;
+            }
+        })
+        .then(data => {
+            }
+        )
+        .catch(err=>{
+                console.error(err);
+            }
+        );
+
     }
 </script>
 <div class="modal fade" id="cartUpdate" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">

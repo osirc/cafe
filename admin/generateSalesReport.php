@@ -40,6 +40,7 @@ if ($result->num_rows > 0) {
     $pdf->Cell(30,12,'Subtotal',1);
     $pdf->Ln();
     $pdf->SetFont('DejaVu','',14);
+    $total = 0;
     while ($row = $result -> fetch_assoc()) {
         if (strlen($row['name']) > 40)
             $pdf->Cell($w[0],6,substr($row['name'],0,40),1);
@@ -49,31 +50,11 @@ if ($result->num_rows > 0) {
         $pdf->Cell($w[2],6,$row['price'],1);
         $pdf->Cell($w[3],6,$row['product_sales'],1);
         $pdf->Cell($w[3],6,$row['sales'],1);
+        $total += $row['sales'];
         $pdf->Ln();
     }
-    $pdf->Output();
-}
-
-
-
-if ($result->num_rows > 0) {
-    $w = array(8, 65, 110, 15);
-    $pdf->Cell(8,12,'ID',1);
-    $pdf->Cell(65,12,'Categoria',1);
-    $pdf->Cell(110,12,'Nombre del producto',1);
-    $pdf->Cell(15,12,'Stock',1);
-    $pdf->Ln();
-    $pdf->SetFont('DejaVu','',14);
-    while ($row = $result -> fetch_assoc()) {
-        $pdf->Cell($w[0],6,$row['id'],1);
-        $pdf->Cell($w[1],6,$row['category'],1);
-        if (strlen($row['name']) > 45)
-            $pdf->Cell($w[2],6,substr($row['name'],0,45),1);
-        else
-            $pdf->Cell($w[2],6,$row['name'],1);
-        $pdf->Cell($w[3],6,number_format($row['stock']),1);
-        $pdf->Ln();
-    }
+    $pdf->Cell(235);
+    $pdf->Write(10,"Total: $" . $total);
     $pdf->Output();
 }
 ?>

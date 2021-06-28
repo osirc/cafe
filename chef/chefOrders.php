@@ -24,9 +24,11 @@ if ($result->num_rows > 0) {
 </div>
             <?php
             $orderNum = 0;
+            $orderStatus = 0;
             foreach($orders as $order) {
                 if ($orderNum == 0) {
                     $orderNum = $order->id;
+                    $orderStatus = $order->statusID;
                 ?>
                 <div class="container-fluid">
                     <div class="table-responsive">
@@ -56,7 +58,7 @@ if ($result->num_rows > 0) {
                     <td></td>
                     <td></td>
                     <td></td>     
-                <td><button type="button" class="btn btn-outline-success float-right" onclick=<?php echo "'updateOrder(" . $orderNum . ",2)'"; echo ($order->statusID == 2) ? "disabled" : "" ; ?>>Aceptar</button></td>
+                <td><button type="button" class="btn btn-outline-success float-right" onclick=<?php echo "'updateOrder(" . $orderNum . ",2)'"; echo ($orderStatus == 2) ? "disabled" : "" ; ?>>Aceptar</button></td>
                 </tr>
                 </tbody>
         </table>
@@ -81,6 +83,7 @@ if ($result->num_rows > 0) {
                             <tbody>
 <?php
                 $orderNum = $order->id;
+                $orderStatus = $order->statusID;
                 }
             ?>
             <tr>

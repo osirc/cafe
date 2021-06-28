@@ -25,6 +25,13 @@
                             <b>$<?php echo $articles[$i]->price;?></b>
                             </div>
                             <div class="col">
+                                <?php
+                                if($articles[$i]->stock == 0) {
+                                ?>
+                                <p style="color:red">Agotado</p>
+                                <?php
+                                } else {
+                                ?>
                                 <select id=<?php echo "'select" . $articles[$i]->id . "'"; ?> class="custom-select-sm">
                                     <?php
                                     $productStock = $articles[$i]->stock;
@@ -32,6 +39,9 @@
                                     <option><?php echo $j; ?></option>
                                     <?php }?>
                                 </select>
+                                <?php
+                                }
+                                ?>
                             </div>
                             <div class="col">
                                 <button type="button" class="btn btn-outline-success float-right" 
