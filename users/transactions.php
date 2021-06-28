@@ -52,15 +52,15 @@
     <div class="clearfix"></div>
 </div>
 
-<form action="user/addTransaction.php" method="POST" enctype="multipart/form-data">
+<form id="fileImage" action="" method="POST" enctype="multipart/form-data">
     <div class="form-group">
         <label for="exampleInputEmail1">Imagen</label>
-        <input type="file" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name="image">
+        <input type="file" class="form-control" id="image" name="image" aria-describedby="emailHelp" name="image">
     </div>
 
     <div class="form-group">
         <label for="exampleInputEmail1">Cantidad</label>
-        <input type="number" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Ingresa aquí el monto del voucher" name="amount">
+        <input type="number" class="form-control" id="amount" name="amount" aria-describedby="emailHelp" placeholder="Ingresa aquí el monto del voucher" name="amount">
     </div>
 
 
