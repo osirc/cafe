@@ -66,8 +66,58 @@
 
     <button type="submit" class="btn btn-primary float-right">Enviar transacción</button>
 </form>
+<script>
+$(function(){
+    $("form#fileImage").submit(function(e) {
+        e.preventDefault();
+        var form =  $("form#fileImage");
+
+        // you can't pass Jquery form it has to be javascript form object
+        var formData = new FormData(form[0]);
+        var url = "http://localhost/cafe/user/addTransaction.php"
 
 
+        $.ajax({
+                type: 'POST',
+                url: url,
+                enctype: 'multipart/form-data',
+                data: new FormData(this),
+                processData: false,
+                contentType: false
+            }
+        ).done  (function(data, textStatus, jqXHR){
+            if (data == 1) {
+                document.getElementById("idModalBody").innerHTML = "La transacción se ha subido correctamente";
+                $("#cartUpdate").modal();
+            } else {
+                document.getElementById("idModalBody").innerHTML = data;
+                $("#cartUpdate").modal();
+            }
+        })
+         .fail  (function(jqXHR, textStatus, errorThrown) { alert("Error")   ; })
+        ;
+
+
+    });
+});
+</script>
+<div class="modal fade" id="cartUpdate" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLongTitle">Estado de transacción</h5>
+                <button id="closeForgotPassword" type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div id="idModalBody" class="modal-body">
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
 
 <!--
 <table>

@@ -18,7 +18,7 @@
         <div class="inner-block">
 
             <form action="" method="post">
-                <h3>Login</h3>
+                <h3>Iniciar sesión</h3>
 
                 <?php echo $accountNotExistErr; ?>
                 <?php echo $emailPwdErr; ?>
@@ -32,7 +32,7 @@
                 </div>
 
                 <div class="form-group">
-                    <label>Password</label>
+                    <label>Contraseña</label>
                     <input type="password" class="form-control" name="password" id="password" />
                 </div>
 

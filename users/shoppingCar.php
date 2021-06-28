@@ -20,14 +20,14 @@
                 <div class="col-12 text-sm-center text-md-left col-md-6">
                     <figcaption class="media-body">
                         <h6 class="title text-truncate"><?php echo $product->productName; ?> </h6>
-                        <dl class="param param-inline small">
+                        <!--<dl class="param param-inline small">
                             <dt>Size: </dt>
                             <dd>XXL</dd>
                         </dl>
                         <dl class="param param-inline small">
                             <dt>Color: </dt>
                             <dd>Orange color</dd>
-                        </dl>
+                        </dl>-->
                     </figcaption>
                 </div>
 
@@ -36,7 +36,7 @@
                                     <?php
                                     $productAmount = $product->amount;
                                     for ($j = 1; $j <= $product->stock; $j++) {?>
-                                    <option <?php if ($j == $productAmount) echo "selected"; ?>><?php echo $j ?></option>
+                                    <option <?php if ($j == $productAmount) echo "selected"; ?> value="<?php echo $j ?>"><?php echo $j ?></option>
                                     <?php }?>
                     </select>
                 </div>
@@ -44,12 +44,12 @@
                 <div class="col-12 col-sm-12 text-sm-center col-md-3 text-md-right row">
                     <div class="col-4  col-md-6">
                         <div class="price-wrap">
-                            <var class="price">$<?php echo $product->price * $product->amount;  ?></var>
-                            <small class="text-muted">$<?php echo $product->price?> cada uno</small>
+                            <var class="price" id="row_<?php echo $product->productID ?>_subtotal">$<?php echo $product->price * $product->amount;  ?></var>
+                            <small class="text-muted" id="row_<?php echo $product->productID ?>_price">$<?php echo $product->price?> cada uno</small>
                         </div>
                     </div>
                     <div class="col-3 col-sm-3 col-md-5 text-sm-center">
-                        <button type="button" class="btn btn-outline-danger btn-xs" onclick=<?php echo "'deleteFromCart(" .  $product->productID . "," . $product->price . "*" . $product->amount . ")'";  ?>>
+                        <button type="button" class="btn btn-outline-danger btn-xs" onclick=<?php echo "'deleteFromCart(" .  $product->productID . "," . $product->price . "* Number(document.getElementById(`select"  . $product->productID .  "`).value))'";  ?>>
                             <i class="fa fa-trash" aria-hidden="true"></i>
                         </button>
                     </div>
@@ -70,7 +70,7 @@
             </div>
             <div class="pull-right" style="margin: 10px">
             <!--    <a href="" class="btn btn-success pull-right" onclick= <?php echo "'checkoutCart()'";  ?>>Checkout</a> -->
-                    <button type="button" class="btn btn-success pull-right" onclick= <?php echo "'checkoutCart()'";  ?>>Checkout</button>
+                    <button id="Checkout" type="button" class="btn btn-success pull-right" onclick= <?php echo "'showCheckout()'";?> <?php echo (count($cart)) == 0 ? "disabled": "" ; ?>>Checkout</button>
                 <div class="pull-right" style="margin: 5px">
                     Total price: <b id="total_price"><?php
                     $stmt = $conn->prepare("SELECT SUM(price * amount) AS total FROM cart INNER JOIN product ON 
@@ -111,10 +111,13 @@
         document.getElementById(`row_${productID}_hr`).remove();
         let display_price=document.getElementById(`total_price`);
         display_price.innerHTML=`$${Number(display_price.innerHTML.slice(1))-subtotal_price}`;
+
+        if(document.getElementsByTagName("select").length==0)
+            document.getElementById(`Checkout`).disabled=true;
+
         let request = {
         id: productID
         }
-
         fetch("./user/deleteFromCart.php", {
             method: 'POST',
             headers: new Headers({"Content-Type": `application/json;charset=utf-8`,}),
@@ -140,6 +143,10 @@
         );
     }
 
+    function showCheckout() {
+        $("#cartChekout").modal();
+    }
+
     function checkoutCart() {
         fetch("./user/checkoutCart.php", {
             method: 'POST',
@@ -156,7 +163,7 @@
         .then(data => {
             if (data == "1") {
                 document.getElementById("exampleModalLongTitle").innerHTML = "¡Felicidades!";
-                document.getElementById("idModalBody").innerHTML = "<p>" + data + "</p>";
+                document.getElementById("idModalBody").innerHTML = "<p>Tu compra fue realizada con éxito!</p>";
             } else {
                 document.getElementById("exampleModalLongTitle").innerHTML = "Error";
                 document.getElementById("idModalBody").innerHTML = "<p>" + data + "</p>";
@@ -171,6 +178,14 @@
     }
 
     function updateCart(productID,amount) {
+        let price=document.getElementById(`row_${productID}_price`).innerHTML;
+        price=Number(price.slice(1,price.length-8));
+
+        let subtotal_element=document.getElementById(`row_${productID}_subtotal`);
+            subtotal_element.innerHTML=`$${Number(amount)*price}`;
+
+        updateTotalPrice();
+
         let request = {
             id: productID,
             amount: amount
@@ -197,6 +212,19 @@
         );
 
     }
+
+    function updateTotalPrice(){
+        let select_elements=document.getElementsByTagName("select");
+        let new_total=0;
+        let aux_price;
+        for(let i=0;i!=select_elements.length;i++){
+            aux_price=document.getElementById(`row_${select_elements[i].id.slice(6)}_price`).innerHTML;
+            aux_price=Number(aux_price.slice(1,aux_price.length-8));
+            new_total+=Number(select_elements[i].value)*aux_price;
+             
+        }
+        document.getElementById(`total_price`).innerHTML=`$${new_total}`;
+    }
 </script>
 <div class="modal fade" id="cartUpdate" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered" role="document">
@@ -211,6 +239,24 @@
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal fade" id="cartChekout" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLongTitle">¿Confirmar compra?</h5>
+                <button id="closeForgotPassword" type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div id="checkoutModalBody" class="modal-body">
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-success" onclick="checkoutCart()" data-dismiss="modal">Confirmar</button>
+                <button type="button" class="btn btn-danger" data-dismiss="modal">Cancelar</button>
             </div>
         </div>
     </div>

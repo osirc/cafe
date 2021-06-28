@@ -32,9 +32,9 @@ $sql = "SELECT product.name, category.name AS category, ticket.price , SUM(amoun
     FROM ticket INNER JOIN product ON product_id = product.id INNER JOIN category ON category_id = category.id GROUP BY product.name";
 $result = $conn->query($sql);
 if ($result->num_rows > 0) {
-    $w = array(125, 50, 30, 30, 30);
-    $pdf->Cell(125,12,'Nombre del producto',1);
-    $pdf->Cell(50,12,'Categoria',1);
+    $w = array(100, 70, 30, 30, 30);
+    $pdf->Cell(100,12,'Nombre del producto',1);
+    $pdf->Cell(70,12,'Categoria',1);
     $pdf->Cell(30,12,'Precio',1);
     $pdf->Cell(30,12,'Ventas',1);
     $pdf->Cell(30,12,'Subtotal',1);

@@ -2,7 +2,7 @@
     <div id="accordion">
     <?php
     //include("./config/config.php");
-    include("./menu/categoryJson.php");
+    include("./menu/categoryJSON.php");
     include("./menu/articleJSON.php");
 
 
@@ -73,6 +73,13 @@
                                         <b>$<?php echo $articles[$i]->price;?></b>
                                     </div>
                                     <div class="col">
+                                        <?php
+                                        if($articles[$i]->stock == 0) {
+                                        ?>
+                                        <p style="color:red">Agotado</p>
+                                        <?php
+                                        } else {
+                                        ?>
                                         <select id=<?php echo "'select" . $articles[$i]->id . "'"; ?> class="custom-select-sm">
                                             <?php
                                             $productStock = $articles[$i]->stock;
@@ -80,9 +87,13 @@
                                                 <option><?php echo $j; ?></option>
                                             <?php }?>
                                         </select>
+                                        <?php
+                                        }
+                                        ?>
+                                        
                                     </div>
                                     <div class="col">
-                                        <button type="button" class="btn btn-outline-success btn-sm float-right" onclick=<?php echo "'addToCart(" . $articles[$i]->id . ")'";  ?>>Agregar</button>
+                                        <button type="button" class="btn btn-outline-success btn-sm float-right" onclick=<?php echo "'addToCart(" . $articles[$i]->id . ")'";  ?> <?php echo $articles[$i]->stock == 0 ? "disabled" : "" ;?>>Agregar</button>
                                     </div>
                                 </div>
                             </div>

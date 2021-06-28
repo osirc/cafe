@@ -14,7 +14,6 @@ if(is_numeric($_POST["amount"])) {
                 $stmt->bind_param("id",$_SESSION["id"], $_POST["amount"]);
                 $stmt->execute();
                 $transactionID = mysqli_insert_id($conn);
-                echo  $transactionID;
                 $newDirectory = "../images/transactions/";
                 move_uploaded_file($_FILES["image"]["tmp_name"],$newDirectory.$imageName);
                 $stmt = $conn->prepare("INSERT INTO transactions_image (transactions_id,path) VALUES (?,?)");

@@ -4,7 +4,7 @@ include("admin/ordersJSON.php");
 
 $sql = "SELECT orders_id, orders_status_id, first_name, last_name, name, amount, date FROM ticket 
         INNER JOIN user ON ticket.user_id = user.id INNER JOIN orders ON ticket.orders_id = orders.id 
-        INNER JOIN product ON ticket.product_id = product.id ORDER BY orders_status_id";
+        INNER JOIN product ON ticket.product_id = product.id ORDER BY orders_status_id ASC, orders_id ASC";
 $result = $conn->query($sql);
 
 if ($result->num_rows > 0) {

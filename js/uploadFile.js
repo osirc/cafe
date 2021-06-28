@@ -1,4 +1,4 @@
-$(function(){
+/*$(function(){
     $("form#fileImage").submit(function(e) {
         e.preventDefault();
         var form =  $("form#fileImage");
@@ -16,10 +16,17 @@ $(function(){
                 processData: false,
                 contentType: false
             }
-        ).done  (function(data, textStatus, jqXHR){ alert('Thank God it worked!'); })
+        ).done  (function(data, textStatus, jqXHR){
+            if (data == 1) {
+                $('#cartUpdate').modal('show');
+            } else {
+                $('#cartUpdate').modal('show');
+            }
+            alert(data); 
+        })
          .fail  (function(jqXHR, textStatus, errorThrown) { alert("Error")   ; })
         ;
 
 
     });
-});
+});*/

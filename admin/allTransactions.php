@@ -97,8 +97,13 @@ if ($result->num_rows > 0) {
             }
         })
         .then(data => {
-                alert(`Estado:${STATUSID}\nData: ${data}`);
-                window.location.reload(true);
+                if (STATUSID == 2) {
+                    document.getElementById("idModalBody").innerHTML = "<p>Transacción rechazada exitosamente</p>";
+                    $("#transactionUpdate").modal();
+                } else {
+                    document.getElementById("idModalBody").innerHTML = "<p>Transacción aceptada exitosamente</p>";
+                    $("#transactionUpdate").modal();
+                }
             }
         )
         .catch(err=>{
@@ -107,3 +112,20 @@ if ($result->num_rows > 0) {
         );
     }
 </script>
+<div class="modal fade" id="transactionUpdate" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLongTitle">Estado de transacción</h5>
+                <button id="closeForgotPassword" type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div id="idModalBody" class="modal-body">
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>

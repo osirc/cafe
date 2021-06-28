@@ -38,9 +38,9 @@
                                             case 4:
                                                 include ('./users/transactions.php');
                                                 break;
-                                            case 5:
+                                            /*case 5:
                                                 include ('./admin/allTransactions.php');
-                                                break;
+                                                break;*/
                                         }
                                     break;
                                     case 1:

@@ -5,7 +5,6 @@ include("../config/config.php");
 
 $content = trim(file_get_contents("php://input"));
 $user = json_decode($content,true);
-var_dump($user);
 $stmt = $conn->prepare("UPDATE transactions SET transactions_status_id = ? WHERE user_id = ? AND id = ?");
 $stmt->bind_param("iii",$user["status"],$user["userID"],$user["id"]);
 echo $stmt->execute();

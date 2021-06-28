@@ -66,7 +66,6 @@ $(function(){
 
                 // Put the results in a div
                 posting.done(function( data ) {
-                    alert(data);
                     alert("Usuario Registrado");
                 });
 
